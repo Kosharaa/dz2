@@ -4,44 +4,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dz2._1
+namespace dz2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Random rand = new Random();
-            int random = rand.Next(1, 101);
-            int chance = 5;
-            bool gameOver = false;
-            //Console.WriteLine(random);
-            
-            while (gameOver == false)
-            {
-                //int playerNumber = Console.ReadLine();
-                int playerNumber = Convert.ToInt32(Console.ReadLine());
-                chance--;
-                // Пытался написать короткий код, но не вышло впихнуть туда и шансы и 4е варианта иф, елсе иф.
-                if (playerNumber != random && chance == 0)
-                {
-                    Console.WriteLine("U have try for 5 times. you lose! ");
-                    gameOver = true;
-                }
-                Console.WriteLine(random == playerNumber ? "You are AWESOME!" : (random < playerNumber ? "WRONG! You'r number is bigger. You have " + chance + " chance" : "WRONG! You'r number is less. You have " + chance + " chance"));
 
-                /*
-                else if (random == playerNumber)
+            Console.WriteLine("Введите любое число");
+            int digit = Convert.ToInt32(Console.ReadLine());
+            int initialdigit = digit;
+            int initialdigit2 = digit;
+            int digitqty = 0;
+            int chetnih = 0;
+            int nech = 0;
+
+
+            while (digit != 0)
+            {
+                digit = digit / 10;
+                digitqty++;
+
+                if ((initialdigit % 2) == 0)
                 {
-                    Console.WriteLine("You are AWESOME! that's right!");
-                    gameOver = true;
+                    chetnih = chetnih + (initialdigit % 10);
+
                 }
-                else if (random < playerNumber) // научился писать код с одной строкой без фигурных скобочек.
-                    Console.WriteLine("WRONG! You'r number is bigger.You have " + chance + " chance");
-                else if (random > playerNumber) // научился писать код с одной строкой без фигурных скобочек.
-                    Console.WriteLine("WRONG! You'r number is less. You have " + chance + " chance");
-                */
+                initialdigit = initialdigit / 10;
+
+                if (((initialdigit2) % 10 % 3) == 0)
+                {
+                    nech++;
+
+                }
+                initialdigit2 = initialdigit2 / 10;
             }
-            //Console.ReadLine();
+            Console.WriteLine("Количество цифр в числе " + initialdigit + " равно - " + digitqty);
+            Console.WriteLine($"Сумма четных цифр равна - " + chetnih);
+            Console.WriteLine($"Сумма цифр кратных трем - " + nech);
+
             Console.ReadKey();
         }
     }
